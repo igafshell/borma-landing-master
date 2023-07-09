@@ -112,17 +112,26 @@
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
+					entry.target.classList.add("fade_show");
 					if (entry.target.classList.contains("fade_up")) {
-						entry.target.classList.add("fade_up_class");
-						entry.target.classList.remove("hidden");
+						entry.target.classList.remove("fade_up");
 					}
 					if (entry.target.classList.contains("fade_left")) {
-						entry.target.classList.add("fade_left_class");
-						entry.target.classList.remove("hidden");
+						entry.target.classList.remove("fade_left");
 					}
 					if (entry.target.classList.contains("fade_right")) {
-						entry.target.classList.add("fade_right_class");
-						entry.target.classList.remove("hidden");
+						entry.target.classList.remove("fade_right");
+					}
+				} else {
+					entry.target.classList.remove("fade_show");
+					if (entry.target.classList.contains("fade_up")) {
+						entry.target.classList.add("fade_up");
+					}
+					if (entry.target.classList.contains("fade_left")) {
+						entry.target.classList.add("fade_left");
+					}
+					if (entry.target.classList.contains("fade_right")) {
+						entry.target.classList.add("fade_right");
 					}
 				}
 			});
@@ -145,51 +154,36 @@
 </main>
 
 <style lang="scss">
-	@keyframes fade_up_animation {
-		0% {
-			filter: blur(5px);
-			transform: translateY(100px);
-			opacity: 0;
-		}
-		100% {
-			filter: blur(0);
-			transform: translateY(0);
-			opacity: 1;
-		}
-	}
-	@keyframes fade_left_animation {
-		0% {
-			filter: blur(5px);
-			transform: translateX(-50px);
-			opacity: 0;
-		}
-		100% {
-			transform: translateX(0);
-			opacity: 1;
-			filter: blur(0);
-		}
-	}
-	@keyframes fade_right_animation {
-		0% {
-			filter: blur(5px);
-			transform: translateX(50px);
-			opacity: 0;
-		}
-		100% {
-			transform: translateX(0);
-			opacity: 1;
-			filter: blur(0);
-		}
-	}
+	.fade_up {
+		opacity: 0;
+		filter: blur(4px);
+		transform: translateY(100px);
 
-	.fade_up_class {
-		animation: fade_up_animation 1s ease-out;
+		@media (prefers-reduced-motion: no-preference) {
+			transition: all 1s ease-out;
+		}
 	}
-	.fade_left_class {
-		animation: fade_left_animation 1s ease-out;
+	.fade_left {
+		opacity: 0;
+		filter: blur(4px);
+		transform: translateX(-100px);
+		@media (prefers-reduced-motion: no-preference) {
+			transition: all 1s ease-out;
+		}
 	}
-	.fade_right_class {
-		animation: fade_right_animation 1s ease-out;
+	.fade_right {
+		opacity: 0;
+		filter: blur(4px);
+		transform: translateX(100px);
+		@media (prefers-reduced-motion: no-preference) {
+			transition: all 1s ease-out;
+		}
+	}
+	.fade_show {
+		opacity: 1;
+		filter: blur(0);
+		transform: translateY(0);
+		transform: translateX(0);
 	}
 
 	a {
