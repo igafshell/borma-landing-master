@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth w-full overflow-x-hidden min-h-screen">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -17,7 +17,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body
-		class="min-h-screen flex flex-col text-white bg-[url('/assets/bg1.png')]"
+		class="min-h-screen w-full overflow-x-hidden flex flex-col text-white bg-[url('/assets/bg1.png')]"
 	>
 		<slot />
 	</body>
