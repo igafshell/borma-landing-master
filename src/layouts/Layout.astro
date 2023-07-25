@@ -16,9 +16,7 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body
-		class="min-h-screen w-full overflow-x-hidden flex flex-col text-white bg-[url('/assets/bg1.png')]"
-	>
+	<body class="min-h-screen w-full overflow-x-hidden flex flex-col text-white">
 		<slot />
 	</body>
 </html>
@@ -31,6 +29,7 @@ const { title } = Astro.props;
 	}
 
 	body {
+		background-image: url("../assets/bg1.webp");
 		background-size: auto auto;
 		background-repeat: repeat-x;
 		background-position: center top;
